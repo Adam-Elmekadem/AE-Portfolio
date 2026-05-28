@@ -421,6 +421,13 @@ export function Component() {
         if (!currentTexture || !targetTexture) return;
 
         isTransitioning = true;
+        if (!shaderMaterial) {
+          // Material not ready yet; bail out and restart timer later
+          isTransitioning = false;
+          safeStartTimer(100);
+          return;
+        }
+
         shaderMaterial.uniforms.uTexture1.value = currentTexture;
         shaderMaterial.uniforms.uTexture2.value = targetTexture;
         shaderMaterial.uniforms.uTexture1Size.value = currentTexture.userData.size;
