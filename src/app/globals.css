@@ -426,6 +426,21 @@ body::after {
     padding-left: clamp(20px, 4vw, 60px);
     border-left: 1px solid var(--line);
   }
+
+  /* Stats: column layout on desktop */
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .about-stat-item { padding-bottom: 32px; }
+  .about-stat-item:last-child { padding-bottom: 0; }
+}
+
+/* Stats appear before bio on mobile */
+@media (max-width: 639px) {
+  .about-stats { order: -1; }
 }
 
 /* Tablet: 2-col for three-col grids */
@@ -468,17 +483,12 @@ body::after {
   /* Contact footer */
   .contact-foot { flex-direction: column !important; gap: 6px !important; align-items: flex-start !important; }
 
-  /* Stats — single row, compact numbers */
+  /* Stats — single row, compact */
   .about-stats {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    gap: 0 !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
   }
-  .about-stat-item {
-    padding-bottom: 0 !important;
-    flex: 1;
-    text-align: center;
-  }
+  .about-stat-item { flex: 1; text-align: center; }
   .about-stat-num { font-size: clamp(28px, 9vw, 40px) !important; }
 }

@@ -158,10 +158,10 @@ export default function About() {
 
         {/* Stats */}
         <div
-          className="about-stats flex flex-col justify-between stat-col"
+          className="about-stats stat-col"
         >
           {stats.map((stat, i) => (
-            <div key={stat.label} className="about-stat-item" style={{ paddingBottom: i < stats.length - 1 ? 32 : 0 }}>
+            <div key={stat.label} className="about-stat-item">
               <div
                 className="font-display about-stat-num"
                 style={{

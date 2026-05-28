@@ -222,7 +222,7 @@ export default function BurgerMenu() {
                   style={{
                     fontFamily: "var(--font-syne),sans-serif",
                     fontWeight: 800,
-                    fontSize: "clamp(44px, 8vw, 110px)",
+                    fontSize: "clamp(28px, 7vw, 110px)",
                     letterSpacing: "-0.03em",
                     color: "var(--paper)",
                     lineHeight: 1,
