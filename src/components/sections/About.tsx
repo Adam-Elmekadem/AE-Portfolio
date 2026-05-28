@@ -161,9 +161,9 @@ export default function About() {
           className="about-stats flex flex-col justify-between stat-col"
         >
           {stats.map((stat, i) => (
-            <div key={stat.label} style={{ paddingBottom: i < stats.length - 1 ? 32 : 0 }}>
+            <div key={stat.label} className="about-stat-item" style={{ paddingBottom: i < stats.length - 1 ? 32 : 0 }}>
               <div
-                className="font-display"
+                className="font-display about-stat-num"
                 style={{
                   fontSize: "clamp(52px, 7vw, 96px)",
                   lineHeight: 1,
