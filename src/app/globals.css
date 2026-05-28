@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0C0B08;
+  --paper: #F2F0EB;
+  --accent: #C8FF2E;
+  --dim: #55544F;
+  --line: #1E1D1A;
+  --line-light: #2E2D29;
+  --nav-h: clamp(56px, 7vw, 72px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── BASE RESETS ─────────────────────────────── */
+/* Inside @layer base so that @layer components can override them */
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    overflow-x: hidden;
+    scroll-behavior: auto;
+    background: var(--ink);
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-space), system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    cursor: none;
+  }
+
+  body,
+  main,
+  section {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  *, *::before, *::after { cursor: none !important; }
+
+  ::selection { background: var(--accent); color: var(--ink); }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--line-light); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── LAYOUT ─────────────────────────────── */
+
+@layer components {
+  .wrap,
+  .container-full {
+    width: 100%;
+    padding-left: clamp(24px, 5.5vw, 100px);
+    padding-right: clamp(24px, 5.5vw, 100px);
+  }
+
+  .section {
+    border-top: 1px solid var(--line);
+    background: var(--ink);
+  }
+
+  .bar {
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .font-display {
+    font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  }
+
+  .font-mono-label {
+    font-family: var(--font-mono), 'Space Mono', monospace;
+  }
+
+  .num-label {
+    font-family: var(--font-mono), 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--dim);
+    text-transform: uppercase;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border: 1px solid var(--line-light);
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--dim);
+    text-transform: uppercase;
+    font-family: var(--font-mono), monospace;
+  }
+
+  .reveal-wrap {
+    overflow: hidden;
+    display: block;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── MARQUEE ─────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+/* ─── NOISE ─────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 11000;
+  opacity: 0.5;
+}
+
+/* ─── LOADER ─────────────────────────────── */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+/* ─── BURGER MENU OVERLAY ─────────────────────────────── */
+.bmenu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--ink);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: var(--nav-h) 1fr auto;
+  visibility: hidden;
+}
+
+.bmenu-scroll {
+  overflow-y: auto;
+  scrollbar-width: auto;
+  scrollbar-color: var(--accent) var(--line);
+}
+
+/* Webkit scrollbar styling */
+.bmenu-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.bmenu-scroll::-webkit-scrollbar-track {
+  background: var(--line);
+}
+
+.bmenu-scroll::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 6px;
+}
+
+.bmenu-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--paper);
 }
