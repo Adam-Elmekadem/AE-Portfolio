@@ -4,19 +4,24 @@ import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { TextGlitch } from "@/components/ui/text-glitch-effect";
+import { useNavigate } from "@/components/providers/TransitionProvider";
 
 gsap.registerPlugin(useGSAP);
 
 const NAV_LINKS = [
-  { label: "Work",       num: "01", href: "#work" },
-  { label: "Profile",    num: "02", href: "#about" },
+  { label: "Work",       num: "01", href: "#work"        },
+  { label: "Profile",    num: "02", href: "#about"       },
   { label: "Skills",     num: "03", href: "#competences" },
-  { label: "Experience", num: "04", href: "#experience" },
-  { label: "Contact",    num: "05", href: "#contact" },
+  { label: "Experience", num: "04", href: "#experience"  },
+  { label: "Guestbook",  num: "05", href: "#guestbook"   },
+  { label: "Contact",    num: "06", href: "#contact"     },
+  { label: "Gallery",    num: "07", href: "/gallery"     },
+  { label: "Socials",    num: "08", href: "/socials"     },
 ];
 
 export default function BurgerMenu() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const overlayRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const leftCurtainRef = useRef<HTMLDivElement>(null);
@@ -108,8 +113,17 @@ export default function BurgerMenu() {
   });
 
   const handleNavClick = (href: string) => {
-    closeMenu();
-    setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 860);
+    if (href.startsWith("/") && href !== "/") {
+      /* AE. overlay covers everything (z-index 199999) instantly —
+         menu closes underneath it, user never sees the old page.  */
+      navigate(href);
+      closeMenu();
+    } else {
+      closeMenu();
+      if (href.startsWith("#")) {
+        setTimeout(() => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" }), 860);
+      }
+    }
   };
 
   const lineBase: React.CSSProperties = {

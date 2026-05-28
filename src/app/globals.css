@@ -15,13 +15,24 @@
   --spacing-md: 1rem;
 }
 
-:root {
+:root,
+[data-theme="dark"] {
   --ink: #0C0B08;
   --paper: #F2F0EB;
   --accent: #C8FF2E;
   --dim: #55544F;
   --line: #1E1D1A;
   --line-light: #2E2D29;
+  --nav-h: clamp(56px, 7vw, 72px);
+}
+
+[data-theme="light"] {
+  --ink: #F2F0EB;
+  --paper: #0C0B08;
+  --accent: #5A9900;
+  --dim: #888580;
+  --line: #D8D6D0;
+  --line-light: #C5C3BC;
   --nav-h: clamp(56px, 7vw, 72px);
 }
 
@@ -34,11 +45,13 @@
     overflow-x: hidden;
     scroll-behavior: auto;
     background: var(--ink);
+    transition: background 0.4s ease, color 0.4s ease;
   }
 
   body {
     background: var(--ink);
     color: var(--paper);
+    transition: background 0.4s ease, color 0.4s ease;
     font-family: var(--font-space), system-ui, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -392,6 +405,14 @@ body::after {
   font-size: 11px;
   color: var(--dim);
   letter-spacing: 0.1em;
+}
+
+/* ─── THEME SPLITTER — keep images natural ─────────────────
+   backdrop-filter:invert(1) on the overlay inverts everything.
+   Applying filter:invert(1) on images cancels it out (double
+   invert = original). --img-inv is 0 when splitter is at rest. */
+img, canvas, video {
+  filter: invert(var(--img-inv, 0));
 }
 
 /* ─── RESPONSIVE ─────────────────────────────── */

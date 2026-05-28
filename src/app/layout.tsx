@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono, Bebas_Neue, Syne } from "next/font/google";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { TransitionProvider } from "@/components/providers/TransitionProvider";
+import { ThemeSplitter } from "@/components/ui/ThemeSplitter";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -98,8 +101,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${spaceMono.variable} ${bebasNeue.variable} ${syne.variable}`}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning className={`${spaceGrotesk.variable} ${spaceMono.variable} ${bebasNeue.variable} ${syne.variable}`}>
+      <body>
+        <ThemeProvider>
+          <TransitionProvider>
+            {children}
+            <ThemeSplitter />
+          </TransitionProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

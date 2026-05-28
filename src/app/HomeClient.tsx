@@ -9,6 +9,7 @@ import Competences from "@/components/sections/Competences";
 import SoftSkills from "@/components/sections/SoftSkills";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
+import Guestbook from "@/components/sections/Guestbook";
 import Loader from "@/components/ui/Loader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import SmoothScroll from "@/components/providers/SmoothScroll";
@@ -29,6 +30,7 @@ export default function HomeClient() {
           <Competences />
           <SoftSkills />
           <Experience />
+          <Guestbook />
           <Contact />
         </main>
       </SmoothScroll>
