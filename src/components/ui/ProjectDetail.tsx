@@ -561,7 +561,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               >
                 ← All Work
               </Link>
-              <span className="num-label">© 2024 ADAM ELMEKADEM</span>
+              <span className="num-label">© {new Date().getFullYear()} ADAM ELMEKADEM</span>
             </div>
 
           </main>

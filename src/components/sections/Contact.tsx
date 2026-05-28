@@ -298,7 +298,7 @@ export default function Contact() {
         className="contact-foot container-full flex items-center justify-between"
         style={{ minHeight: "clamp(56px, 6vw, 64px)", paddingTop: 12, paddingBottom: 12 }}
       >
-        <span className="num-label">© 2024 ADAM ELMEKADEM</span>
+        <span className="num-label">© {new Date().getFullYear()} ADAM ELMEKADEM</span>
         <span className="num-label">DESIGNED AND BUILT BY AE.</span>
       </div>
     </section>

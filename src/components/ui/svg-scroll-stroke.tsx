@@ -47,7 +47,7 @@ function StrokeBackground({ scrollYProgress }: { scrollYProgress: ReturnType<typ
   );
 }
 
-/* ── Story section row ────────────────────────────────────── */
+              <span className="num-label">© {new Date().getFullYear()} ADAM ELMEKADEM</span>
 function StorySection({
   section,
   index,

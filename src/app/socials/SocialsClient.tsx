@@ -71,7 +71,7 @@ export default function SocialsClient() {
             className="container-full flex items-center justify-between"
             style={{ height: "clamp(56px, 6vw, 64px)" }}
           >
-            <span className="num-label">© 2024 ADAM ELMEKADEM</span>
+            <span className="num-label">© {new Date().getFullYear()} ADAM ELMEKADEM</span>
             <span className="num-label">DESIGNED AND BUILT BY AE.</span>
           </div>
 
