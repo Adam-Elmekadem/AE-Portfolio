@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { TextGlitch } from "@/components/ui/text-glitch-effect";
 
 gsap.registerPlugin(useGSAP);
 
@@ -206,14 +207,6 @@ export default function BurgerMenu() {
                   padding: "clamp(16px, 2.5vh, 32px) 0",
                   width: "100%", textAlign: "left",
                 }}
-                onMouseEnter={(e) => {
-                  const lbl = e.currentTarget.querySelector<HTMLElement>(".bmenu-lbl");
-                  if (lbl) lbl.style.color = "var(--accent)";
-                }}
-                onMouseLeave={(e) => {
-                  const lbl = e.currentTarget.querySelector<HTMLElement>(".bmenu-lbl");
-                  if (lbl) lbl.style.color = "var(--paper)";
-                }}
               >
                 <span style={{
                   fontFamily: "var(--font-mono),monospace",
@@ -223,21 +216,19 @@ export default function BurgerMenu() {
                   {link.num}
                 </span>
 
-                <span className="bmenu-lbl" title={link.label} style={{
-                  fontFamily: "var(--font-syne),sans-serif",
-                  fontWeight: 800,
-                  fontSize: "clamp(44px, 8vw, 110px)",
-                  letterSpacing: "-0.03em",
-                  color: "var(--paper)",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  transition: "color 0.18s",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                }}>
-                  {link.label}
-                </span>
+                <TextGlitch
+                  text={link.label}
+                  className="bmenu-lbl"
+                  style={{
+                    fontFamily: "var(--font-syne),sans-serif",
+                    fontWeight: 800,
+                    fontSize: "clamp(44px, 8vw, 110px)",
+                    letterSpacing: "-0.03em",
+                    color: "var(--paper)",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
+                  }}
+                />
 
                 <span style={{
                   marginLeft: "auto", flexShrink: 0,
