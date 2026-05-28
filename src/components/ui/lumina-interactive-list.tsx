@@ -439,17 +439,22 @@ export function Component() {
         updateCounter(currentSlideIndex);
         updateNavigationState(currentSlideIndex);
 
+        // capture uniform references to avoid accessing `shaderMaterial` inside async callbacks
+        const progressUniform = shaderMaterial.uniforms.uProgress;
+        const uTexture1Uniform = shaderMaterial.uniforms.uTexture1;
+        const uTexture1SizeUniform = shaderMaterial.uniforms.uTexture1Size;
+
         gsap.fromTo(
-          shaderMaterial.uniforms.uProgress,
+          progressUniform,
           { value: 0 },
           {
             value: 1,
             duration: TRANSITION_DURATION(),
             ease: "power2.inOut",
             onComplete: () => {
-              shaderMaterial.uniforms.uProgress.value = 0;
-              shaderMaterial.uniforms.uTexture1.value = targetTexture;
-              shaderMaterial.uniforms.uTexture1Size.value = targetTexture.userData.size;
+              progressUniform.value = 0;
+              uTexture1Uniform.value = targetTexture;
+              uTexture1SizeUniform.value = targetTexture.userData.size;
               isTransitioning = false;
               safeStartTimer(100);
             },
