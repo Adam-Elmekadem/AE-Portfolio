@@ -11,12 +11,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const experience = [
   {
     id: "01",
-    role: "Stage SNRT",
+    role: "SNRT Internship",
     company: "SNRT",
-    period: "1 mois",
-    type: "Stage",
-    description: "Développement d'une application Laravel sous la supervision du responsable du service des archives du bâtiment et de la télévision.",
-    highlights: ["Archives vidéo", "Application Laravel", "Travail supervisé"],
+    period: "1 month",
+    type: "Internship",
+    description: "Developed a Laravel application under the supervision of the head of the building and television archive service.",
+    highlights: ["Video archives", "Laravel application", "Supervised work"],
   },
   {
     id: "02",
@@ -24,26 +24,26 @@ const experience = [
     company: "Upwork & Fiverr",
     period: "2022 — 2024",
     type: "Freelance",
-    description: "Expérience en design graphique pour des clients internationaux, développement d'identités visuelles, gestion de projets créatifs et collaboration en équipe.",
-    highlights: ["Identités visuelles", "Clients internationaux", "Collaboration"],
+    description: "Graphic design experience for international clients, including visual identity development, creative project management, and collaboration.",
+    highlights: ["Visual identities", "International clients", "Collaboration"],
   },
   {
     id: "03",
-    role: "Projets personnels",
-    company: "Formation continue",
+    role: "Personal Projects",
+    company: "Continuous Learning",
     period: "2020 — 2022",
-    type: "Indépendant",
-    description: "Création de projets web pour affiner la maîtrise du front-end, de l'interface et de la structuration de contenu.",
+    type: "Independent",
+    description: "Built web projects to improve front-end mastery, interface design, and content structure.",
     highlights: ["HTML / CSS", "React", "UI claire"],
   },
   {
     id: "04",
-    role: "Apprentissage technique",
-    company: "Web et design digital",
+    role: "Technical Learning",
+    company: "Web and digital design",
     period: "2018 — 2020",
-    type: "Autodidacte",
-    description: "Apprentissage des bases du développement web, du graphisme et des outils nécessaires pour construire des interfaces propres et efficaces.",
-    highlights: ["Bases web", "Logiciels de design", "Autonomie"],
+    type: "Self-taught",
+    description: "Learned web development fundamentals, graphic design, and the tools needed to build clean and effective interfaces.",
+    highlights: ["Web fundamentals", "Design tools", "Autonomy"],
   },
 ];
 
@@ -90,8 +90,8 @@ export default function Experience() {
         className="container-full flex items-center justify-between"
         style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
       >
-        <span className="num-label">EXPÉRIENCES PROFESSIONNELLES</span>
-        <span className="num-label">{experience.length} ENTRÉES</span>
+        <span className="num-label">PROFESSIONAL EXPERIENCE</span>
+        <span className="num-label">{experience.length} ENTRIES</span>
       </div>
 
       {/* Heading */}
@@ -103,7 +103,7 @@ export default function Experience() {
           borderBottom: "1px solid var(--line)",
         }}
       >
-        {["OÙ J'AI", "TRAVAILLÉ."].map((line, i) => (
+        {["WHERE I HAVE", "WORKED."].map((line, i) => (
           <div key={i} style={{ overflow: "hidden" }}>
             <div
               className="exp-line font-display"

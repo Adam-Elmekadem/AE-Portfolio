@@ -18,7 +18,7 @@ const categories = [
     skills: ["PHP", "Laravel", "MySQL", "Python"],
   },
   {
-    label: "Design & Outils",
+    label: "Design & Tools",
     skills: ["Figma", "GSAP", "Git", "Vercel"],
   },
 ];
@@ -61,8 +61,8 @@ export default function Competences() {
         className="container-full flex items-center justify-between"
         style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
       >
-        <span className="num-label">COMPÉTENCES</span>
-        <span className="num-label">STACK TECHNIQUE</span>
+        <span className="num-label">SKILLS</span>
+        <span className="num-label">TECH STACK</span>
       </div>
 
       {/* Heading */}
@@ -74,7 +74,7 @@ export default function Competences() {
           borderBottom: "1px solid var(--line)",
         }}
       >
-        {["CE QUE", "JE MAÎTRISE."].map((line, i) => (
+        {["WHAT I", "MASTER."].map((line, i) => (
           <div key={i} style={{ overflow: "hidden" }}>
             <div
               className="comp-reveal font-display"

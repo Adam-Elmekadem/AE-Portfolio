@@ -31,8 +31,8 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Adam Elmekadem — Développeur Full Stack Jr",
-  description: "Portfolio d'Adam Elmekadem, développeur digital et designer graphique.",
+  title: "Adam Elmekadem - Junior Full Stack Developer",
+  description: "Portfolio of Adam Elmekadem, digital developer and graphic designer.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

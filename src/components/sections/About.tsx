@@ -17,9 +17,9 @@ const stack = [
 ];
 
 const stats = [
-  { value: "23", label: "Ans" },
-  { value: "2+", label: "Années Freelance" },
-  { value: "10+", label: "Projets" },
+  { value: "23", label: "Years" },
+  { value: "2+", label: "Freelance Years" },
+  { value: "10+", label: "Projects" },
 ];
 
 export default function About() {
@@ -95,8 +95,8 @@ export default function About() {
         style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
       >
         <span className="num-label">ABOUT</span>
-        <span className="num-label">PROFIL</span>
-        <span className="num-label">SIDI MOUSSA, SALÉ</span>
+        <span className="num-label">PROFILE</span>
+        <span className="num-label">SIDI MOUSSA, SALE</span>
       </div>
 
       {/* Big statement heading */}
@@ -108,7 +108,7 @@ export default function About() {
           borderBottom: "1px solid var(--line)",
         }}
       >
-        {["JE CRÉE", "DES PROJETS", "ALLIANT", "CRÉATIVITÉ ET FONCTIONNALITÉ."].map((line, i) => (
+        {["I CREATE", "PROJECTS", "THAT BLEND", "CREATIVITY AND FUNCTIONALITY."].map((line, i) => (
           <div key={i} style={{ overflow: "hidden" }}>
             <div
               className="about-line font-display"
@@ -147,9 +147,9 @@ export default function About() {
               maxWidth: 480,
             }}
           >
-            Je suis Adam Elmekadem, j&apos;ai 23 ans, développeur digital et designer
-            graphique. Je crée des projets web alliant créativité et fonctionnalité,
-            avec une forte volonté d&apos;innover.
+            I am Adam Elmekadem, 23 years old, a digital developer and graphic
+            designer. I build web projects that combine creativity and
+            functionality, with a strong drive to innovate.
           </p>
           <p
             className="about-bio"
@@ -161,9 +161,9 @@ export default function About() {
               marginTop: 20,
             }}
           >
-            Je m&apos;intéresse particulièrement à la performance, à l&apos;accessibilité et
-            aux détails qui rendent une interface plus claire. Quand je ne code pas,
-            j&apos;explore de nouveaux outils et j&apos;affine mes idées visuelles.
+            I am especially interested in performance, accessibility, and the
+            details that make an interface clearer. When I am not coding, I
+            explore new tools and refine visual ideas.
           </p>
 
           <motion.a
@@ -184,7 +184,7 @@ export default function About() {
             whileHover={{ x: 6 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
-            Me contacter ↗
+            Contact Me ↗
           </motion.a>
         </div>
 
@@ -229,7 +229,7 @@ export default function About() {
         }}
       >
         <div style={{ marginBottom: 24 }}>
-          <span className="num-label">COMPÉTENCES TECHNIQUES</span>
+          <span className="num-label">TECHNICAL SKILLS</span>
         </div>
         <div
           className="stack-grid"

@@ -138,7 +138,7 @@ export default function BurgerMenu() {
 
         <button
           onClick={open ? closeMenu : openMenu}
-          aria-label={open ? "Fermer" : "Menu"}
+          aria-label={open ? "Close" : "Menu"}
           style={{ display: "flex", flexDirection: "column", gap: 6, padding: "10px 0" }}
         >
           <span style={{ ...lineBase, transform: open ? "translateY(7.5px) rotate(45deg)" : "none" }} />

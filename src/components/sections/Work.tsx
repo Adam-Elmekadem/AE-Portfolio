@@ -15,7 +15,7 @@ const projects = [
     title: "A&K Store",
     category: "Front End / React JS",
     year: "2024",
-    description: "Application e-commerce front-end pensée pour une navigation claire, des visuels propres et une expérience rapide sur mobile.",
+    description: "Front-end e-commerce application designed for clear navigation, clean visuals, and a fast mobile experience.",
     tags: ["React JS", "Front End", "UI"],
     color: "#1A2A1A",
     accentColor: "#C8FF2E",
@@ -25,7 +25,7 @@ const projects = [
     title: "Certif-Ease",
     category: "Front End / Back End",
     year: "2024",
-    description: "Plateforme de gestion de certificats avec une interface simple pour l'édition, le suivi et la consultation des documents.",
+    description: "Certificate management platform with a simple interface for editing, tracking, and reviewing documents.",
     tags: ["Laravel", "HTML", "CSS"],
     color: "#1A1A2A",
     accentColor: "#8B8BFF",
@@ -35,7 +35,7 @@ const projects = [
     title: "Landing Page Studio",
     category: "Design / SEO",
     year: "2023",
-    description: "Pages vitrines légères et structurées pour présenter un service ou une marque avec une hiérarchie claire.",
+    description: "Lightweight, structured landing pages to present a service or brand with clear visual hierarchy.",
     tags: ["HTML5", "CSS3", "Responsive"],
     color: "#2A1A2A",
     accentColor: "#FF8BE8",
@@ -45,7 +45,7 @@ const projects = [
     title: "Dashboard Admin",
     category: "UI / PHP",
     year: "2023",
-    description: "Interface d'administration conçue pour suivre des contenus, des utilisateurs et des actions principales en un coup d'œil.",
+    description: "Admin interface built to monitor content, users, and key actions at a glance.",
     tags: ["React", "PHP", "MySQL"],
     color: "#2A1A1A",
     accentColor: "#FF8B8B",
@@ -55,7 +55,7 @@ const projects = [
     title: "Portfolio Web",
     category: "Design / Motion",
     year: "2022",
-    description: "Site personnel centré sur la clarté du contenu, la lisibilité et l'identité visuelle.",
+    description: "Personal website focused on content clarity, readability, and visual identity.",
     tags: ["Next.js", "Design", "Motion"],
     color: "#1A2A2A",
     accentColor: "#8BFFF0",
@@ -108,17 +108,17 @@ export default function Work() {
     <section ref={sectionRef} id="work" className="section" onMouseMove={handleMouseMove}>
       {/* Header bar */}
       <div className="container-full flex items-center justify-between" style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}>
-        <div style={{ overflow: "hidden" }}><span className="work-reveal num-label block">TRAVAUX SÉLECTIONNÉS</span></div>
-        <div style={{ overflow: "hidden" }}><span className="work-reveal num-label block">{projects.length} PROJETS</span></div>
+        <div style={{ overflow: "hidden" }}><span className="work-reveal num-label block">SELECTED WORK</span></div>
+        <div style={{ overflow: "hidden" }}><span className="work-reveal num-label block">{projects.length} PROJECTS</span></div>
       </div>
 
       {/* Heading */}
       <div className="container-full" style={{ paddingTop: "clamp(40px, 6vw, 80px)", paddingBottom: "clamp(40px, 6vw, 80px)", borderBottom: "1px solid var(--line)" }}>
         <div style={{ overflow: "hidden" }}>
-          <div className="work-reveal font-display" style={{ fontSize: "clamp(52px, 10vw, 130px)", lineHeight: 0.88, letterSpacing: "-0.02em", color: "var(--paper)" }}>CE QUE J&apos;AI</div>
+          <div className="work-reveal font-display" style={{ fontSize: "clamp(52px, 10vw, 130px)", lineHeight: 0.88, letterSpacing: "-0.02em", color: "var(--paper)" }}>WHAT I HAVE</div>
         </div>
         <div style={{ overflow: "hidden" }}>
-          <div className="work-reveal font-display" style={{ fontSize: "clamp(52px, 10vw, 130px)", lineHeight: 0.88, letterSpacing: "-0.02em", color: "var(--accent)" }}>CONSTRUIT.</div>
+          <div className="work-reveal font-display" style={{ fontSize: "clamp(52px, 10vw, 130px)", lineHeight: 0.88, letterSpacing: "-0.02em", color: "var(--accent)" }}>BUILT.</div>
         </div>
       </div>
 

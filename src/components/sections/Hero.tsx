@@ -10,24 +10,24 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrambleTextPlugin);
 
 /* ─── Data ─────────────────────────────────────────────────────── */
 const SLIDES = [
-  { img: "/images_inspi/378372806200200270.jpg" },
-  { img: "/images_inspi/843862048972875266.jpg" },
-  { img: "/images_inspi/Idyllic Greek Island View with Yachts.jpg" },
-  { img: "/images_inspi/téléchargement.jpg" },
-  { img: "/images_inspi/378372806200200270.jpg" },
-  { img: "/images_inspi/843862048972875266.jpg" },
+  { img: "/images.png" },
+  { img: "/img1.png" },
+  { img: "/img2.png" },
+  { img: "/images.png" },
+  { img: "/img1.png" },
+  { img: "/img2.png" },
 ];
 
 const NAV_ITEMS = [
-  { label: "TRAVAUX",     num: "01", section: "#work",        slide: 1 },
-  { label: "PROFIL",      num: "02", section: "#about",       slide: 2 },
-  { label: "COMPÉTENCES", num: "03", section: "#competences", slide: 3 },
-  { label: "EXPÉRIENCE",  num: "04", section: "#experience",  slide: 4 },
+  { label: "WORK",        num: "01", section: "#work",        slide: 1 },
+  { label: "PROFILE",     num: "02", section: "#about",       slide: 2 },
+  { label: "SKILLS",      num: "03", section: "#competences", slide: 3 },
+  { label: "EXPERIENCE",  num: "04", section: "#experience",  slide: 4 },
   { label: "CONTACT",     num: "05", section: "#contact",     slide: 5 },
 ];
 
 const services = [
-  "Développement Web", "Design Digital", "React", "Laravel",
+  "Web Development", "Digital Design", "React", "Laravel",
   "HTML / CSS", "JavaScript", "Figma", "Freelance",
 ];
 
@@ -75,7 +75,7 @@ export default function Hero() {
     if (subtitleRef.current) {
       tl.to(subtitleRef.current, {
         duration: 1.2,
-        scrambleText: { text: "Développeur Full Stack Jr", chars: "upperCase", speed: 0.6 },
+        scrambleText: { text: "Junior Full Stack Developer", chars: "upperCase", speed: 0.6 },
         ease: "none",
       }, "-=0.4");
     }
@@ -102,19 +102,19 @@ export default function Hero() {
       ref={sectionRef}
       id="hero"
       className="relative flex flex-col"
-      style={{ minHeight: "100svh", paddingTop: "var(--nav-h)", borderBottom: "1px solid var(--line)" }}
+      style={{ minHeight: "100svh", paddingTop: "var(--nav-h)", borderBottom: "1px solid white" }}
     >
       {/* ── Background images ──────────────────────────────── */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         {SLIDES.map((slide, i) => (
-          <img
+            <img
             key={i}
             src={slide.img}
             alt=""
             style={{
               position: "absolute", inset: 0,
               width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: "center 20%",
+              objectFit: "cover", objectPosition: slide.img && slide.img.includes("img2") ? "center center" : "center 20%",
               opacity: i === displaySlide ? 1 : 0,
               transition: "opacity 1.6s ease",
             }}
@@ -135,12 +135,12 @@ export default function Hero() {
           className="hero-top container-full flex items-center justify-between"
           style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
         >
-          <span className="num-label">ADAM ELMEKADEM — 2024</span>
+          <span className="num-label" style={{ color: "white" }}>ADAM ELMEKADEM — 2024</span>
           <div className="flex items-center gap-3">
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-            <span className="num-label">DISPONIBLE POUR TRAVAILLER</span>
+            <span className="num-label" style={{ color: "white" }}>AVAILABLE FOR WORK</span>
           </div>
-          <span className="num-label">SALÉ, MAROC</span>
+          <span className="num-label" style={{ color: "white" }}>SALE, MOROCCO</span>
         </div>
 
         {/* Big name headline */}
@@ -156,7 +156,7 @@ export default function Hero() {
                   style={{
                     fontSize: "clamp(80px, 18vw, 220px)",
                     letterSpacing: "-0.02em",
-                    color: i === 1 ? "var(--accent)" : "var(--paper)",
+                    color: "white",
                     display: "block",
                   }}
                 >
@@ -166,7 +166,7 @@ export default function Hero() {
             ))}
 
             <div style={{ marginTop: "clamp(20px, 3vw, 40px)", display: "flex", alignItems: "flex-start", gap: "clamp(16px, 3vw, 40px)" }}>
-              <div style={{ width: 1, minHeight: 40, background: "var(--line-light)", flexShrink: 0 }} />
+              <div style={{ width: 1, minHeight: 40, background: "white", flexShrink: 0 }} />
               <span
                 ref={subtitleRef}
                 style={{
@@ -194,7 +194,7 @@ export default function Hero() {
                 style={{
                   fontFamily: "var(--font-mono), monospace", fontSize: 11,
                   letterSpacing: "0.12em", textTransform: "uppercase",
-                  color: "var(--dim)", whiteSpace: "nowrap",
+                  color: "white", whiteSpace: "nowrap",
                   padding: "0 clamp(20px, 3vw, 40px)",
                   display: "flex", alignItems: "center", gap: "clamp(20px, 3vw, 40px)",
                 }}
@@ -219,31 +219,31 @@ export default function Hero() {
               onClick={() => handleNavClick(item.section, item.slide)}
               onMouseEnter={() => handleNavEnter(item.slide)}
               onMouseLeave={handleNavLeave}
-              style={{
+                style={{
                 display: "flex", alignItems: "center", gap: 10,
                 padding: "clamp(10px, 1.4vw, 14px) clamp(14px, 2vw, 24px)",
-                borderLeft:   "1px solid var(--line)",
-                borderBottom: "1px solid var(--line)",
-                borderTop:    item.num === "01" ? "1px solid var(--line)" : "none",
+                borderLeft:   "1px solid white",
+                borderBottom: "1px solid white",
+                borderTop:    item.num === "01" ? "1px solid white" : "none",
                 background:   active ? "rgba(200,255,46,0.06)" : "transparent",
                 transition:   "background 0.25s ease",
                 cursor: "pointer", textAlign: "left",
               }}
             >
-              <span className="num-label" style={{ color: active ? "var(--accent)" : "var(--dim)", transition: "color 0.2s", fontSize: 10 }}>
+              <span className="num-label" style={{ color: "white", transition: "color 0.2s", fontSize: 10 }}>
                 {item.num}
               </span>
               <span style={{
                 fontFamily: "var(--font-mono), monospace",
                 fontSize: "clamp(9px, 1vw, 11px)", letterSpacing: "0.12em",
                 textTransform: "uppercase", whiteSpace: "nowrap",
-                color: active ? "var(--paper)" : "var(--dim)", transition: "color 0.2s",
+                color: "white", transition: "color 0.2s",
               }}>
                 {item.label}
               </span>
               <span style={{
                 fontSize: "0.65rem",
-                color: active ? "var(--accent)" : "transparent",
+                color: active ? "white" : "transparent",
                 transition: "all 0.2s",
                 transform: active ? "translateX(2px) translateY(-2px)" : "none",
                 display: "inline-block",

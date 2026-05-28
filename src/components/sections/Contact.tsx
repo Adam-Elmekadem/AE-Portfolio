@@ -68,7 +68,7 @@ export default function Contact() {
         style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
       >
         <span className="num-label">CONTACT</span>
-        <span className="num-label">RESTONS EN CONTACT</span>
+        <span className="num-label">LET'S STAY IN TOUCH</span>
       </div>
 
       {/* Giant CTA heading */}
@@ -80,7 +80,7 @@ export default function Contact() {
           borderBottom: "1px solid var(--line)",
         }}
       >
-        {["RESTONS", "EN", "CONTACT."].map((line, i) => (
+        {["LET'S", "STAY IN", "TOUCH."].map((line, i) => (
           <div key={i} style={{ overflow: "hidden" }}>
             <div
               className="contact-line font-display"
@@ -120,14 +120,14 @@ export default function Contact() {
                 maxWidth: 420,
               }}
             >
-              Vous avez un projet en tête ? Je suis toujours ouvert aux nouvelles
-              idées, aux collaborations et aux problèmes intéressants à résoudre.
-              Envoyez-moi un message — je réponds généralement sous 24 heures.
+              Do you have a project in mind? I am always open to new ideas,
+              collaborations, and interesting problems to solve. Send me a
+              message - I usually reply within 24 hours.
             </p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <span className="num-label">EMAIL DIRECT</span>
+            <span className="num-label">DIRECT EMAIL</span>
             <a
               href="mailto:adamelmekadem1@gmail.com"
               style={{
@@ -147,7 +147,7 @@ export default function Contact() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <span className="num-label">R. SOCIAL</span>
+            <span className="num-label">SOCIAL LINKS</span>
             <div style={{ display: "flex", gap: 16 }}>
               {socials.map(({ label, href, Icon }) => (
                 <motion.a
@@ -181,7 +181,7 @@ export default function Contact() {
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {/* Name */}
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span className="num-label">VOTRE NOM</span>
+            <span className="num-label">YOUR NAME</span>
             <input
               type="text"
               required
@@ -237,7 +237,7 @@ export default function Contact() {
               rows={4}
               value={form.message}
               onChange={(e) => setForm((p) => ({ ...p, message: e.target.value }))}
-              placeholder="Parlez-moi de votre projet..."
+              placeholder="Tell me about your project..."
               style={{
                 background: "transparent",
                 border: "none",
@@ -279,15 +279,15 @@ export default function Contact() {
             <AnimatePresence mode="wait">
               {status === "sent" ? (
                 <motion.span key="sent" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  Message envoyé ✓
+                  Message sent ✓
                 </motion.span>
               ) : status === "sending" ? (
                 <motion.span key="sending" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  Envoi...
+                  Sending...
                 </motion.span>
               ) : (
                 <motion.span key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  Envoyer le message ↗
+                  Send Message ↗
                 </motion.span>
               )}
             </AnimatePresence>
@@ -301,7 +301,7 @@ export default function Contact() {
         style={{ height: "clamp(56px, 6vw, 64px)" }}
       >
         <span className="num-label">© 2024 ADAM ELMEKADEM</span>
-        <span className="num-label">CONÇU ET RÉALISÉ PAR AE.</span>
+        <span className="num-label">DESIGNED AND BUILT BY AE.</span>
       </div>
     </section>
   );
