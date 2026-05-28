@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import BurgerMenu from "@/components/ui/BurgerMenu";
 import CustomCursor from "@/components/ui/CustomCursor";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import { InfiniteSlider } from "@/components/ui/infinite-slider-horizontal";
 import { type Project } from "@/lib/projects-data";
 
 /* ─── Signature pad ──────────────────────────────────────────── */
@@ -138,82 +139,93 @@ function SignaturePad() {
 
 /* ─── Gallery ────────────────────────────────────────────────── */
 function Gallery({ images, accent }: { images: string[]; accent: string }) {
-  const [active, setActive] = useState(0);
-
-  const go = (i: number) => setActive(Math.max(0, Math.min(images.length - 1, i)));
+  const mirroredImages = [...images].reverse();
 
   return (
     <div>
-      {/* Main image */}
-      <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", overflow: "hidden", background: "var(--ink)", borderBottom: "1px solid var(--line)" }}>
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={active}
-            src={images[active]}
-            alt={`Screenshot ${active + 1}`}
-            initial={{ opacity: 0, scale: 1.03 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
-        </AnimatePresence>
-
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={() => go(active - 1)}
-              disabled={active === 0}
-              style={{
-                position: "absolute", left: "clamp(16px, 3vw, 40px)", top: "50%",
-                transform: "translateY(-50%)", background: "rgba(12,11,8,0.75)",
-                border: "1px solid var(--line-light)", color: active === 0 ? "var(--dim)" : "var(--paper)",
-                width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: active === 0 ? "default" : "pointer", fontSize: 18,
-              }}
-            >
-              ←
-            </button>
-            <button
-              onClick={() => go(active + 1)}
-              disabled={active === images.length - 1}
-              style={{
-                position: "absolute", right: "clamp(16px, 3vw, 40px)", top: "50%",
-                transform: "translateY(-50%)", background: "rgba(12,11,8,0.75)",
-                border: "1px solid var(--line-light)", color: active === images.length - 1 ? "var(--dim)" : "var(--paper)",
-                width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: active === images.length - 1 ? "default" : "pointer", fontSize: 18,
-              }}
-            >
-              →
-            </button>
-          </>
-        )}
-
-        <span
-          className="num-label"
-          style={{ position: "absolute", bottom: 16, right: "clamp(16px, 3vw, 40px)" }}
-        >
-          {String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
-        </span>
+      <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <DisplayHeading lines={["SELECTED", "FRAMES."]} accentIndex={1} />
+          <p style={{ ...detailCopyStyle, maxWidth: 560, margin: 0 }}>
+            A continuous gallery strip keeps the project readable while giving the screenshots a more editorial, immersive rhythm.
+          </p>
+        </div>
       </div>
 
-      {/* Thumbnails */}
-      <div style={{ display: "flex", gap: 2, overflowX: "auto", scrollbarWidth: "none", borderBottom: "1px solid var(--line)" }}>
-        {images.map((src, i) => (
-          <button
-            key={i}
-            onClick={() => go(i)}
-            style={{
-              flexShrink: 0, width: "clamp(64px, 9vw, 120px)", aspectRatio: "16/9",
-              overflow: "hidden", border: "none", padding: 0, cursor: "pointer",
-              outline: active === i ? `2px solid ${accent}` : "2px solid transparent",
-              outlineOffset: -2, opacity: active === i ? 1 : 0.4, transition: "opacity 0.2s",
-            }}
-          >
-            <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          </button>
-        ))}
+      <div className="container-full" style={{ paddingTop: "clamp(32px, 5vw, 60px)", paddingBottom: "clamp(40px, 6vw, 80px)", borderBottom: "1px solid var(--line)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+          <InfiniteSlider direction="horizontal" gap={18} duration={32} className="w-full">
+            {images.map((src, i) => (
+              <div
+                key={`${src}-${i}`}
+                style={{ flexShrink: 0, width: "clamp(220px, 24vw, 360px)" }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: "4 / 3",
+                    overflow: "hidden",
+                    border: `1px solid ${accent}22`,
+                    background: "var(--line)",
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt={`Screenshot ${i + 1}`}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to bottom, rgba(12,11,8,0.05), rgba(12,11,8,0.38))",
+                      pointerEvents: "none",
+                    }}
+                  />
+                  <span className="num-label" style={{ position: "absolute", left: 16, bottom: 16, color: "var(--paper)" }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </InfiniteSlider>
+
+          <InfiniteSlider direction="horizontal" gap={18} duration={36} reverse className="w-full">
+            {mirroredImages.map((src, i) => (
+              <div
+                key={`${src}-reverse-${i}`}
+                style={{ flexShrink: 0, width: "clamp(220px, 24vw, 360px)" }}
+              >
+                <div
+                  style={{
+                    position: "relative",
+                    aspectRatio: "4 / 3",
+                    overflow: "hidden",
+                    border: `1px solid ${accent}18`,
+                    background: "var(--line)",
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt={`Screenshot ${images.length - i}`}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(to bottom, rgba(12,11,8,0.08), rgba(12,11,8,0.46))",
+                      pointerEvents: "none",
+                    }}
+                  />
+                  <span className="num-label" style={{ position: "absolute", left: 16, bottom: 16, color: "var(--paper)" }}>
+                    {String(images.length - i).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </InfiniteSlider>
+        </div>
       </div>
     </div>
   );
@@ -381,10 +393,6 @@ export default function ProjectDetail({ project }: { project: Project }) {
               <div className="container-full flex items-center justify-between" style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}>
                 <span className="num-label" style={{ color: "var(--accent)" }}>01 — GALLERY</span>
                 <span className="num-label">{project.images.length} SCREENSHOTS</span>
-              </div>
-
-              <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
-                <DisplayHeading lines={["SELECTED", "SCREENSHOTS."]} accentIndex={1} />
               </div>
 
               <Gallery images={project.images} accent={project.accentColor} />
