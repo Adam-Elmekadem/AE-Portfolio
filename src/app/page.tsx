@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import Work from "@/components/sections/Work";
 import About from "@/components/sections/About";
 import Competences from "@/components/sections/Competences";
+import SoftSkills from "@/components/sections/SoftSkills";
 import Experience from "@/components/sections/Experience";
 import Contact from "@/components/sections/Contact";
 import Loader from "@/components/ui/Loader";
@@ -26,6 +27,7 @@ export default function Home() {
           <Work />
           <About />
           <Competences />
+          <SoftSkills />
           <Experience />
           <Contact />
         </main>

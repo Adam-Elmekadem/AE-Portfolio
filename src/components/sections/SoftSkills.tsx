@@ -10,43 +10,43 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const categories = [
   {
-    label: "Front End",
-    skills: ["Html5", "TypeScript", "css3", "JavaScript", "Next.js", "TailwindCSS", "Bootstrap", "Framer Motion"],
+    label: "Interpersonal",
+    skills: ["Communication", "Active Listening", "Empathy", "Teamwork", "Conflict Resolution"],
   },
   {
-    label: "Back End",
-    skills: ["PHP", "Laravel", "MySQL", "Python", "Node.js", "Java", "Express"],
+    label: "Leadership",
+    skills: ["Decision Making", "Mentoring", "Accountability", "Initiative", "Delegation"],
   },
   {
-    label: "Design & Tools",
-    skills: ["Figma", "GSAP", "Git", "GitHub/Gitlab","Docker", "CI/CD", "Netlify", "Claude ai"],
+    label: "Mindset",
+    skills: ["Adaptability", "Critical Thinking", "Creativity", "Time Management", "Resilience"],
   },
 ];
 
-export default function Competences() {
+export default function SoftSkills() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from(".comp-reveal", {
+    gsap.from(".soft-reveal", {
       yPercent: 105,
       duration: 0.9,
       stagger: 0.07,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: ".comp-heading",
+        trigger: ".soft-heading",
         start: "top 82%",
         toggleActions: "play none none reverse",
       },
     });
 
-    gsap.from(".comp-cat", {
+    gsap.from(".soft-cat", {
       opacity: 0,
       y: 20,
       stagger: 0.1,
       duration: 0.6,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: ".comp-grid",
+        trigger: ".soft-grid",
         start: "top 85%",
         toggleActions: "play none none reverse",
       },
@@ -54,30 +54,30 @@ export default function Competences() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="competences" className="section">
+    <section ref={sectionRef} id="soft-skills" className="section">
 
       {/* Label bar */}
       <div
         className="container-full flex items-center justify-between"
         style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
       >
-        <span className="num-label">SKILLS</span>
-        <span className="num-label">TECH STACK</span>
+        <span className="num-label">SOFT SKILLS</span>
+        <span className="num-label">REALITY</span>
       </div>
 
       {/* Heading */}
       <div
-        className="comp-heading container-full"
+        className="soft-heading container-full"
         style={{
           paddingTop: "clamp(40px, 6vw, 80px)",
           paddingBottom: "clamp(40px, 6vw, 80px)",
           borderBottom: "1px solid var(--line)",
         }}
       >
-        {["WHAT I", "MASTER."].map((line, i) => (
+        {["WHAT I", "BRING."].map((line, i) => (
           <div key={i} style={{ overflow: "hidden" }}>
             <div
-              className="comp-reveal font-display"
+              className="soft-reveal font-display"
               style={{
                 fontSize: "clamp(52px, 10vw, 130px)",
                 lineHeight: 0.88,
@@ -93,7 +93,7 @@ export default function Competences() {
 
       {/* Skills grid */}
       <div
-        className="comp-grid container-full"
+        className="soft-grid container-full"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
@@ -104,7 +104,7 @@ export default function Competences() {
         {categories.map((cat, i) => (
           <div
             key={cat.label}
-            className="comp-cat"
+            className="soft-cat"
             style={{
               padding: "clamp(32px, 5vw, 60px) clamp(20px, 3vw, 40px)",
               borderRight: i < categories.length - 1 ? "1px solid var(--line)" : "none",

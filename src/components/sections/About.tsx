@@ -9,13 +9,6 @@ import { motion } from "framer-motion";
 
 gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
-const stack = [
-  "HTML5", "CSS3", "JavaScript", "React",
-  "PHP", "Laravel", "TailwindCSS", "Bootstrap",
-  "Figma", "Python", "Git", "MySQL",
-  "Next.js", "GSAP", "Framer", "Vercel",
-];
-
 const stats = [
   { value: "23", label: "Years" },
   { value: "2+", label: "Freelance Years" },
@@ -70,34 +63,11 @@ export default function About() {
           delay: i * 0.15,
         });
       });
+    }, { scope: sectionRef });
 
-      gsap.from(".stack-item", {
-        opacity: 0,
-        y: 12,
-        stagger: { amount: 0.6, from: "start" },
-        duration: 0.4,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".stack-grid",
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    },
-    { scope: sectionRef }
-  );
-
+  
   return (
     <section ref={sectionRef} id="about" className="section">
-      {/* Label bar */}
-      <div
-        className="container-full flex items-center justify-between"
-        style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
-      >
-        <span className="num-label">ABOUT</span>
-        <span className="num-label">PROFILE</span>
-        <span className="num-label">SIDI MOUSSA, SALE</span>
-      </div>
 
       {/* Big statement heading */}
       <div
@@ -220,51 +190,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Tech stack grid */}
-      <div
-        className="container-full"
-        style={{
-          paddingTop: "clamp(32px, 5vw, 60px)",
-          paddingBottom: "clamp(32px, 5vw, 60px)",
-        }}
-      >
-        <div style={{ marginBottom: 24 }}>
-          <span className="num-label">TECHNICAL SKILLS</span>
-        </div>
-        <div
-          className="stack-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-            gap: 0,
-          }}
-        >
-          {stack.map((tech) => (
-            <motion.div
-              key={tech}
-              className="stack-item"
-              style={{
-                padding: "clamp(12px, 2vw, 20px)",
-                borderRight: "1px solid var(--line)",
-                borderBottom: "1px solid var(--line)",
-                fontFamily: "var(--font-mono), monospace",
-                fontSize: 11,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                color: "var(--dim)",
-                cursor: "default",
-                transition: "all 0.2s",
-              }}
-              whileHover={{
-                color: "var(--paper)",
-                backgroundColor: "var(--line)",
-              }}
-            >
-              {tech}
-            </motion.div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
