@@ -170,24 +170,10 @@ body::after {
 
 .bmenu-scroll {
   overflow-y: auto;
-  scrollbar-width: auto;
-  scrollbar-color: var(--accent) var(--line);
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-light) transparent;
 }
 
-/* Webkit scrollbar styling */
-.bmenu-scroll::-webkit-scrollbar {
-  width: 12px;
-}
-
-.bmenu-scroll::-webkit-scrollbar-track {
-  background: var(--line);
-}
-
-.bmenu-scroll::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 6px;
-}
-
-.bmenu-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--paper);
-}
+.bmenu-scroll::-webkit-scrollbar { width: 3px; }
+.bmenu-scroll::-webkit-scrollbar-track { background: transparent; }
+.bmenu-scroll::-webkit-scrollbar-thumb { background: var(--line-light); border-radius: 2px; }

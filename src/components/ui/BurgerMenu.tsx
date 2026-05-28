@@ -44,6 +44,7 @@ export default function BurgerMenu() {
   const openMenu = contextSafe(() => {
     if (tlRef.current) tlRef.current.kill();
     setOpen(true);
+    window.dispatchEvent(new Event("lenis:stop"));
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
@@ -84,6 +85,7 @@ export default function BurgerMenu() {
     if (tlRef.current) tlRef.current.kill();
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
+    window.dispatchEvent(new Event("lenis:start"));
 
     tlRef.current = gsap.timeline({
       onComplete() {

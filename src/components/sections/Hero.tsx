@@ -5,18 +5,21 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { LuminaBackground } from "@/components/ui/lumina-interactive-list";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrambleTextPlugin);
 
 /* ─── Data ─────────────────────────────────────────────────────── */
-const SLIDES = [
-  { img: "/images.png" },
-  { img: "/img1.png" },
-  { img: "/img2.png" },
-  { img: "/images.png" },
-  { img: "/img1.png" },
-  { img: "/img2.png" },
+const IMAGES = [
+  "/images.png",
+  "/img1.png",
+  "/img2.png",
+  "/images.png",
+  "/img1.png",
+  "/img2.png",
 ];
+
+const SLIDES = IMAGES.map(img => ({ img }));
 
 const NAV_ITEMS = [
   { label: "WORK",        num: "01", section: "#work",        slide: 1 },
@@ -104,22 +107,9 @@ export default function Hero() {
       className="relative flex flex-col"
       style={{ minHeight: "100svh", paddingTop: "var(--nav-h)", borderBottom: "1px solid white" }}
     >
-      {/* ── Background images ──────────────────────────────── */}
+      {/* ── Background — WebGL glass-bubble transitions ──────── */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        {SLIDES.map((slide, i) => (
-            <img
-            key={i}
-            src={slide.img}
-            alt=""
-            style={{
-              position: "absolute", inset: 0,
-              width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: slide.img && slide.img.includes("img2") ? "center center" : "center 20%",
-              opacity: i === displaySlide ? 1 : 0,
-              transition: "opacity 1.6s ease",
-            }}
-          />
-        ))}
+        <LuminaBackground images={IMAGES} currentSlide={displaySlide} />
         {/* Gradient overlay */}
         <div style={{
           position: "absolute", inset: 0, pointerEvents: "none",
