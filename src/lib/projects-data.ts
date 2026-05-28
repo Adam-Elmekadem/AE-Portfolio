@@ -1,0 +1,219 @@
+export interface Collaborator {
+  name: string;
+  role: string;
+}
+
+export interface Project {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  tags: string[];
+  color: string;
+  accentColor: string;
+  live?: string;
+  images: string[];
+  coverImage: string;
+  story: {
+    headline: string;
+    paragraphs: string[];
+  };
+  whyBuilt: {
+    headline: string;
+    paragraphs: string[];
+  };
+  collaborators: Collaborator[];
+}
+
+const ak = (file: string) => `/projects/a_k_store/${file}`;
+
+export const projects: Project[] = [
+  {
+    id: "01",
+    slug: "a-k-store",
+    title: "A&K Store",
+    category: "Front End / React JS",
+    year: "2024",
+    description:
+      "Front-end e-commerce application designed for clear navigation, clean visuals, and a fast mobile experience.",
+    tags: ["React", "React Router", "Context API", "Cloudinary", "Netlify"],
+    color: "#0D1F0D",
+    accentColor: "#C8FF2E",
+    live: "https://akstor-e.netlify.app/",
+    coverImage: ak("new_collection.png"),
+    images: [
+      ak("Capture d'écran 2026-05-28 205557.png"),
+      ak("Capture d'écran 2026-05-28 205641.png"),
+      ak("new_collection.png"),
+      ak("Capture d'écran 2026-05-28 205709.png"),
+      ak("Capture d'écran 2026-05-28 205748.png"),
+      ak("stay_in_touch.png"),
+      ak("Capture d'écran 2026-05-28 205837.png"),
+      ak("Capture d'écran 2026-05-28 205904.png"),
+      ak("Capture d'écran 2026-05-28 205954.png"),
+      ak("Capture d'écran 2026-05-28 210049.png"),
+      ak("Capture d'écran 2026-05-28 210420.png"),
+      ak("Capture d'écran 2026-05-28 210452.png"),
+    ],
+    story: {
+      headline: "Fashion isn't just shopping — it's storytelling.",
+      paragraphs: [
+        "A&K Store is a luxury fashion e-commerce platform built around a bold black-and-red visual identity. The premise is simple: every collection carries a distinct mood — streetwear energy, minimalist elegance, vintage nostalgia.",
+        "The home page opens on a split-screen hero with an oversized headline and full-bleed editorial photography. Below, a three-column new-arrivals grid, flip-card brand partners (Nike, Adidas, Puma), and a high-contrast newsletter signup reinforce the brand's confident tone.",
+        "The shop page is fully filterable by category — All, Men, Women, Kids — with paginated product cards showing photo, name, price and a live cart. A dark/light mode toggle and Cloudinary-hosted imagery round out a tight, performant front-end.",
+      ],
+    },
+    whyBuilt: {
+      headline: "To prove that React alone can deliver a production-grade shopping experience.",
+      paragraphs: [
+        "I wanted to challenge myself to build a complete, believable e-commerce product without a back-end framework. Using only React, React Router, and Context API forced me to think carefully about state architecture — cart logic, filtering, and pagination all had to live cleanly in context without any external state library.",
+        "The design constraints were equally important. A bold two-color palette (black + red) demands discipline — every element has to earn its place. Working within that restriction sharpened my eye for spacing, contrast, and typographic hierarchy.",
+        "Deploying on Netlify and serving images through Cloudinary taught me the infrastructure side of front-end work. The result is a site that loads fast, looks deliberate, and behaves exactly as a user expects.",
+      ],
+    },
+    collaborators: [
+      { name: "Adam Elmekadem", role: "Lead Developer & Designer" },
+    ],
+  },
+  {
+    id: "02",
+    slug: "certif-ease",
+    title: "Certif-Ease",
+    category: "Front End / Back End",
+    year: "2024",
+    description:
+      "Certificate management platform with a simple interface for editing, tracking, and reviewing documents.",
+    tags: ["Laravel", "HTML", "CSS", "MySQL"],
+    color: "#0D0D1F",
+    accentColor: "#8B8BFF",
+    coverImage: "https://picsum.photos/seed/certif-cover/1200/800",
+    images: [
+      "https://picsum.photos/seed/certif-1/1200/800",
+      "https://picsum.photos/seed/certif-2/1200/800",
+      "https://picsum.photos/seed/certif-3/1200/800",
+    ],
+    story: {
+      headline: "Documents shouldn't require a developer to manage.",
+      paragraphs: [
+        "Certif-Ease is a certificate management platform that gives organisations a clean interface for creating, editing, tracking, and distributing formal documents — without touching a spreadsheet or a PDF editor.",
+        "Built with Laravel on the back end and a clean HTML/CSS front end, the platform handles the full lifecycle of a certificate: draft, review, approve, issue. A structured MySQL schema keeps audit trails intact.",
+      ],
+    },
+    whyBuilt: {
+      headline: "A real workflow problem that deserved a real solution.",
+      paragraphs: [
+        "The project grew from watching a team spend hours manually formatting Word documents and emailing PDFs. Certif-Ease replaced that process with a tracked, auditable workflow that saves time on every issuance.",
+        "Building it pushed my Laravel skills into areas I hadn't explored before — file generation, role-based permissions, and structured database migrations. The constraint of having no JavaScript framework forced me to write efficient, minimal vanilla JS.",
+      ],
+    },
+    collaborators: [
+      { name: "Adam Elmekadem", role: "Full Stack Developer" },
+    ],
+  },
+  {
+    id: "03",
+    slug: "e-garden",
+    title: "E-garden Landing Page",
+    category: "Design / SEO",
+    year: "2025",
+    description:
+      "Lightweight, structured landing pages to present a service or brand with clear visual hierarchy for a plant brief.",
+    tags: ["HTML5", "CSS3", "Responsive", "React"],
+    color: "#1F0D1F",
+    accentColor: "#FF8BE8",
+    coverImage: "https://picsum.photos/seed/egarden-cover/1200/800",
+    images: [
+      "https://picsum.photos/seed/egarden-1/1200/800",
+      "https://picsum.photos/seed/egarden-2/1200/800",
+      "https://picsum.photos/seed/egarden-3/1200/800",
+    ],
+    story: {
+      headline: "Every plant deserves a beautiful home online.",
+      paragraphs: [
+        "E-garden is a landing page for a plant and garden e-commerce brand. The brief called for a calm, organic aesthetic that communicated trust and care — green palettes, generous white space, and editorial-quality photography layouts.",
+        "The page is structured around a clear content hierarchy: hero statement, product showcase, about the brand, and a contact strip. Every section answers a user question before they ask it.",
+      ],
+    },
+    whyBuilt: {
+      headline: "To master the discipline of restraint in design.",
+      paragraphs: [
+        "Landing pages are deceptively hard. You have one scroll and one chance to communicate value. E-garden was an exercise in reducing — cutting every element that didn't directly serve conversion or brand trust.",
+        "The SEO structure was a deliberate focus. Semantic HTML, proper heading hierarchy, and image alt text mean the page performs as well in search as it does in the browser.",
+      ],
+    },
+    collaborators: [
+      { name: "Adam Elmekadem", role: "Designer & Developer" },
+    ],
+  },
+  {
+    id: "04",
+    slug: "opportunia",
+    title: "Opportunia",
+    category: "UI / Laravel",
+    year: "2026",
+    description: "Internship platform for connecting students with job opportunities.",
+    tags: ["React", "Laravel", "MySQL", "PL/SQL"],
+    color: "#1F0D0D",
+    accentColor: "#FF8B8B",
+    coverImage: "https://picsum.photos/seed/opport-cover/1200/800",
+    images: [
+      "https://picsum.photos/seed/opport-1/1200/800",
+      "https://picsum.photos/seed/opport-2/1200/800",
+      "https://picsum.photos/seed/opport-3/1200/800",
+    ],
+    story: {
+      headline: "Bridging the gap between students and their first opportunity.",
+      paragraphs: [
+        "Opportunia is a full-stack internship platform where students create profiles, browse verified openings, and apply directly — while companies post opportunities and manage their applicant pipeline in a dedicated dashboard.",
+        "The React front end talks to a Laravel REST API backed by MySQL. PL/SQL procedures handle the more complex reporting queries, keeping the application layer clean.",
+      ],
+    },
+    whyBuilt: {
+      headline: "Because finding an internship shouldn't feel like a second job.",
+      paragraphs: [
+        "The idea came from direct frustration. The process of finding internships is fragmented — job boards, LinkedIn, cold emails, university notice boards. Opportunia consolidates it into one place with structured data on both sides.",
+        "Building a two-sided platform — student and company — was the real technical challenge. Role-based access, different dashboards, and shared data models pushed my architecture thinking further than any single-sided app had.",
+      ],
+    },
+    collaborators: [
+      { name: "Adam Elmekadem", role: "Lead Developer & UI Designer" },
+    ],
+  },
+  {
+    id: "05",
+    slug: "portfolio",
+    title: "Portfolio Web",
+    category: "Design / Motion",
+    year: "2026",
+    description:
+      "Personal website focused on content clarity, readability, and visual identity.",
+    tags: ["Next.js", "GSAP", "Three.js", "Framer Motion", "TypeScript"],
+    color: "#0D1F1F",
+    accentColor: "#8BFFF0",
+    coverImage: "https://picsum.photos/seed/port-cover/1200/800",
+    images: [
+      "https://picsum.photos/seed/port-1/1200/800",
+      "https://picsum.photos/seed/port-2/1200/800",
+      "https://picsum.photos/seed/port-3/1200/800",
+    ],
+    story: {
+      headline: "The portfolio is the work. The work is the portfolio.",
+      paragraphs: [
+        "This site is a live demonstration of everything I know about motion, 3D, and interaction design. Built on Next.js with a static export, it combines GSAP scroll animations, React Three Fiber WebGL effects, and Framer Motion transitions into a single coherent experience.",
+        "Every section was designed to communicate a specific idea: the hero introduces the person, the work section proves the skill, the about section humanises the engineer, and the contact section makes the next step frictionless.",
+      ],
+    },
+    whyBuilt: {
+      headline: "To have one URL that says everything a CV can't.",
+      paragraphs: [
+        "A portfolio in 2026 needs to do more than list projects. It needs to demonstrate taste, technical depth, and the ability to execute — all within the first 30 seconds. Building this site was an exercise in applying every technique I know to a single, high-stakes brief: myself.",
+        "The constraint of a static export pushed me to solve WebGL, smooth scroll, and dynamic routing without a server — a genuinely interesting technical problem that I'm proud of the solution to.",
+      ],
+    },
+    collaborators: [
+      { name: "Adam Elmekadem", role: "Designer, Developer & Architect" },
+    ],
+  },
+];

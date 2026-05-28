@@ -1,65 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { projects } from "@/lib/projects-data";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-const projects = [
-  {
-    id: "01",
-    title: "A&K Store",
-    category: "Front End / React JS",
-    year: "2024",
-    description: "Front-end e-commerce application designed for clear navigation, clean visuals, and a fast mobile experience.",
-    tags: ["React JS", "Front End", "UI"],
-    color: "#0D1F0D",
-    accentColor: "#C8FF2E",
-  },
-  {
-    id: "02",
-    title: "Certif-Ease",
-    category: "Front End / Back End",
-    year: "2024",
-    description: "Certificate management platform with a simple interface for editing, tracking, and reviewing documents.",
-    tags: ["Laravel", "HTML", "CSS"],
-    color: "#0D0D1F",
-    accentColor: "#8B8BFF",
-  },
-  {
-    id: "03",
-    title: "E-garden Landing Page",
-    category: "Design / SEO",
-    year: "2025",
-    description: "Lightweight, structured landing pages to present a service or brand with clear visual hierarchy for a plant brief.",
-    tags: ["HTML5", "CSS3", "Responsive", "React"],
-    color: "#1F0D1F",
-    accentColor: "#FF8BE8",
-  },
-  {
-    id: "04",
-    title: "Opportunia",
-    category: "UI / Laravel",
-    year: "2026",
-    description: "Internship platform for connecting students with job opportunities.",
-    tags: ["React", "Laravel", "MySQL", "Pl/sql"],
-    color: "#1F0D0D",
-    accentColor: "#FF8B8B",
-  },
-  {
-    id: "05",
-    title: "Portfolio Web",
-    category: "Design / Motion",
-    year: "2026",
-    description: "Personal website focused on content clarity, readability, and visual identity.",
-    tags: ["Next.js", "Design", "Motion"],
-    color: "#0D1F1F",
-    accentColor: "#8BFFF0",
-  },
-];
 
 export default function Work() {
   const sectionRef  = useRef<HTMLElement>(null);
@@ -140,8 +89,12 @@ export default function Work() {
       {projects.map((project) => {
         const isHovered = hoveredId === project.id;
         return (
-          <div
+          <Link
             key={project.id}
+            href={`/work/${project.slug}`}
+            style={{ display: "block", textDecoration: "none" }}
+          >
+          <div
             className="work-row container-full"
             onMouseEnter={() => setHoveredId(project.id)}
             onMouseLeave={() => setHoveredId(null)}
@@ -199,6 +152,7 @@ export default function Work() {
               </span>
             </div>
           </div>
+          </Link>
         );
       })}
 
