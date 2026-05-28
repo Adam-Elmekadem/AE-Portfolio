@@ -97,10 +97,8 @@ export default function About() {
 
       {/* Bio + Stats */}
       <div
-        className="container-full grid"
+        className="container-full two-col"
         style={{
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(40px, 6vw, 80px)",
           paddingTop: "clamp(40px, 6vw, 80px)",
           paddingBottom: "clamp(40px, 6vw, 80px)",
           borderBottom: "1px solid var(--line)",
@@ -160,8 +158,7 @@ export default function About() {
 
         {/* Stats */}
         <div
-          className="about-stats flex flex-col justify-between"
-          style={{ paddingLeft: "clamp(20px, 4vw, 60px)", borderLeft: "1px solid var(--line)" }}
+          className="about-stats flex flex-col justify-between stat-col"
         >
           {stats.map((stat, i) => (
             <div key={stat.label} style={{ paddingBottom: i < stats.length - 1 ? 32 : 0 }}>

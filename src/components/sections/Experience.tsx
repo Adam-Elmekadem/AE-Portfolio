@@ -133,7 +133,7 @@ export default function Experience() {
             transition={{ duration: 0.2 }}
           >
             <div
-              className="container-full"
+              className="container-full exp-inner"
               style={{
                 padding: "clamp(28px, 4vw, 48px) clamp(20px, 4vw, 80px)",
                 display: "grid",
@@ -144,7 +144,7 @@ export default function Experience() {
             >
               {/* Number */}
               <span
-                className="num-label"
+                className="num-label exp-num"
                 style={{ paddingTop: 4 }}
               >
                 {item.id}
@@ -205,6 +205,7 @@ export default function Experience() {
 
               {/* Period + type */}
               <div
+                className="exp-meta"
                 style={{
                   display: "flex",
                   flexDirection: "column",

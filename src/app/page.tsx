@@ -1,37 +1,21 @@
-"use client";
+import type { Metadata } from "next";
+import HomeClient from "./HomeClient";
 
-import { useState } from "react";
-import BurgerMenu from "@/components/ui/BurgerMenu";
-import Hero from "@/components/sections/Hero";
-import Work from "@/components/sections/Work";
-import About from "@/components/sections/About";
-import Competences from "@/components/sections/Competences";
-import SoftSkills from "@/components/sections/SoftSkills";
-import Experience from "@/components/sections/Experience";
-import Contact from "@/components/sections/Contact";
-import Loader from "@/components/ui/Loader";
-import CustomCursor from "@/components/ui/CustomCursor";
-import SmoothScroll from "@/components/providers/SmoothScroll";
+export const metadata: Metadata = {
+  title: "Adam Elmekadem — Full Stack Developer & UI/UX Designer",
+  description:
+    "Welcome to the portfolio of Adam Elmekadem — a full-stack developer and UI/UX designer building fast, creative web experiences with React, Next.js, GSAP, and Three.js.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "/",
+    title: "Adam Elmekadem — Full Stack Developer & UI/UX Designer",
+    description:
+      "Full-stack developer and UI/UX designer crafting high-performance, visually rich web experiences.",
+  },
+};
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <>
-      <CustomCursor />
-      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
-      <BurgerMenu />
-      <SmoothScroll>
-        <main>
-          <Hero />
-          <Work />
-          <About />
-          <Competences />
-          <SoftSkills />
-          <Experience />
-          <Contact />
-        </main>
-      </SmoothScroll>
-    </>
-  );
+  return <HomeClient />;
 }

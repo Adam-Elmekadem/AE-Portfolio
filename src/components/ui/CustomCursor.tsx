@@ -100,7 +100,7 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
+    <div className="custom-cursor">
       {/* Ring */}
       <div
         ref={ringRef}
@@ -147,6 +147,6 @@ export default function CustomCursor() {
           willChange: "transform",
         }}
       />
-    </>
+    </div>
   );
 }

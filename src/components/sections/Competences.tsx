@@ -93,22 +93,14 @@ export default function Competences() {
 
       {/* Skills grid */}
       <div
-        className="comp-grid container-full"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 0,
-          borderBottom: "1px solid var(--line)",
-        }}
+        className="comp-grid three-col container-full"
+        style={{ borderBottom: "1px solid var(--line)" }}
       >
-        {categories.map((cat, i) => (
+        {categories.map((cat) => (
           <div
             key={cat.label}
-            className="comp-cat"
-            style={{
-              padding: "clamp(32px, 5vw, 60px) clamp(20px, 3vw, 40px)",
-              borderRight: i < categories.length - 1 ? "1px solid var(--line)" : "none",
-            }}
+            className="comp-cat cat-cell"
+            style={{ padding: "clamp(32px, 5vw, 60px) clamp(20px, 3vw, 40px)" }}
           >
             <span className="num-label" style={{ display: "block", marginBottom: 24 }}>
               {cat.label}

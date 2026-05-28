@@ -122,15 +122,15 @@ export default function Hero() {
 
         {/* Top info bar */}
         <div
-          className="hero-top container-full flex items-center justify-between"
-          style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)" }}
+          className="hero-top container-full flex items-center justify-between flex-wrap"
+          style={{ minHeight: "clamp(56px, 7vw, 72px)", gap: 8, borderBottom: "1px solid var(--line)" }}
         >
           <span className="num-label" style={{ color: "white" }}>ADAM ELMEKADEM — 2024</span>
           <div className="flex items-center gap-3">
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-            <span className="num-label" style={{ color: "white" }}>AVAILABLE FOR WORK</span>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
+            <span className="num-label hidden sm:inline" style={{ color: "white" }}>AVAILABLE FOR WORK</span>
           </div>
-          <span className="num-label" style={{ color: "white" }}>SALE, MOROCCO</span>
+          <span className="num-label hero-location" style={{ color: "white" }}>SALE, MOROCCO</span>
         </div>
 
         {/* Big name headline */}

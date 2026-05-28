@@ -99,10 +99,8 @@ export default function Contact() {
 
       {/* Form + Info */}
       <div
-        className="contact-content container-full grid"
+        className="contact-content container-full two-col"
         style={{
-          gridTemplateColumns: "1fr 1fr",
-          gap: "clamp(40px, 6vw, 80px)",
           paddingTop: "clamp(40px, 6vw, 80px)",
           paddingBottom: "clamp(60px, 8vw, 100px)",
           borderBottom: "1px solid var(--line)",
@@ -297,8 +295,8 @@ export default function Contact() {
 
       {/* Footer */}
       <div
-        className="container-full flex items-center justify-between"
-        style={{ height: "clamp(56px, 6vw, 64px)" }}
+        className="contact-foot container-full flex items-center justify-between"
+        style={{ minHeight: "clamp(56px, 6vw, 64px)", paddingTop: 12, paddingBottom: 12 }}
       >
         <span className="num-label">© 2024 ADAM ELMEKADEM</span>
         <span className="num-label">DESIGNED AND BUILT BY AE.</span>

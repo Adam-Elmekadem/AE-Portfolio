@@ -393,3 +393,78 @@ body::after {
   color: var(--dim);
   letter-spacing: 0.1em;
 }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
+
+/* Restore native cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body, *, *::before, *::after { cursor: auto !important; }
+  .custom-cursor { display: none !important; }
+}
+
+@layer components {
+  /* 2-col layout — stacks on mobile */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+  }
+
+  /* 3-col grid — shrinks on tablet, stacks on mobile */
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  /* Category cells: right border on all but last */
+  .cat-cell { border-right: 1px solid var(--line); }
+  .cat-cell:last-child { border-right: none; }
+
+  /* Stat column: left border on desktop */
+  .stat-col {
+    padding-left: clamp(20px, 4vw, 60px);
+    border-left: 1px solid var(--line);
+  }
+}
+
+/* Tablet: 2-col for three-col grids */
+@media (max-width: 1023px) {
+  .three-col { grid-template-columns: repeat(2, 1fr); }
+  .cat-cell:nth-child(even) { border-right: none; }
+  .cat-cell:nth-child(odd)  { border-right: 1px solid var(--line); }
+  .cat-cell:last-child       { border-right: none; }
+}
+
+/* Mobile: single column everything */
+@media (max-width: 639px) {
+  .two-col   { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
+
+  .cat-cell {
+    border-right: none !important;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stat-col {
+    padding-left: 0;
+    padding-top: clamp(32px, 5vw, 48px);
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Hero: hide location label */
+  .hero-location { display: none; }
+
+  /* Experience: collapse number column */
+  .exp-inner { grid-template-columns: 1fr !important; }
+  .exp-num   { display: none !important; }
+  .exp-meta  { flex-direction: row !important; align-items: center !important; gap: 12px !important; }
+
+  /* Work slider: hide minimap, expand overlay */
+  .ps-minimap { display: none !important; }
+  .ps-overlay { right: clamp(24px, 5.5vw, 60px) !important; }
+
+  /* Contact footer */
+  .contact-foot { flex-direction: column !important; gap: 6px !important; align-items: flex-start !important; }
+}
