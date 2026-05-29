@@ -1,18 +1,19 @@
 "use client";
 
 import { useRef, useState } from "react";
-import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { projects } from "@/lib/projects-data";
+import { useNavigate } from "@/components/providers/TransitionProvider";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Work() {
   const sectionRef  = useRef<HTMLElement>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const navigate    = useNavigate();
 
   /* Mouse tracking for the floating card */
   const mouseX = useMotionValue(0);
@@ -89,10 +90,10 @@ export default function Work() {
       {projects.map((project) => {
         const isHovered = hoveredId === project.id;
         return (
-          <Link
+          <div
             key={project.id}
-            href={`/work/${project.slug}`}
-            style={{ display: "block", textDecoration: "none" }}
+            onClick={() => navigate(`/work/${project.slug}`)}
+            style={{ display: "block", textDecoration: "none", cursor: "pointer" }}
           >
           <div
             className="work-row container-full"
@@ -152,7 +153,7 @@ export default function Work() {
               </span>
             </div>
           </div>
-          </Link>
+          </div>
         );
       })}
 

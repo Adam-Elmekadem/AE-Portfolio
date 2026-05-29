@@ -513,3 +513,14 @@ img, canvas, video {
   .about-stat-item { flex: 1; text-align: center; }
   .about-stat-num { font-size: clamp(28px, 9vw, 40px) !important; }
 }
+
+/* ─── PROJECT ACCENT HELPERS (for dynamic live-link backgrounds) ───────────────── */
+.live-link { text-decoration: none; transition: opacity 0.15s ease; }
+.live-link:hover { opacity: 0.92; }
+
+.a-k-store-accent .live-link { background: #C8FF2E; color: var(--ink); }
+.certif-ease-accent .live-link { background: #8B8BFF; color: var(--ink); }
+.e-garden-accent .live-link { background: #FF8BE8; color: var(--ink); }
+.opportunia-accent .live-link { background: #FF8B8B; color: var(--ink); }
+.portfolio-accent .live-link { background: #8BFFF0; color: var(--ink); }
+

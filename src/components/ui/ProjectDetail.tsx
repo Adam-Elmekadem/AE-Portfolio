@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import BurgerMenu from "@/components/ui/BurgerMenu";
 import CustomCursor from "@/components/ui/CustomCursor";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { InfiniteSlider } from "@/components/ui/infinite-slider-horizontal";
 import { type Project } from "@/lib/projects-data";
+import { useNavigate } from "@/components/providers/TransitionProvider";
+import { TextGlitch } from "@/components/ui/text-glitch-effect";
 
 /* ─── Signature pad ──────────────────────────────────────────── */
 function SignaturePad() {
@@ -265,11 +266,22 @@ function DisplayHeading({
   size?: string;
 }) {
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       {lines.map((line, index) => (
         <div key={`${line}-${index}`} style={{ overflow: "hidden" }}>
-          <div
+          <motion.div
             className="font-display"
+            variants={{
+              hidden: { y: "110%" },
+              visible: {
+                y: 0,
+                transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 },
+              },
+            }}
             style={{
               ...detailHeadingStyle,
               fontSize: size,
@@ -277,16 +289,17 @@ function DisplayHeading({
             }}
           >
             {line}
-          </div>
+          </motion.div>
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 }
 
 /* ─── Full project detail page ───────────────────────────────── */
 export default function ProjectDetail({ project }: { project: Project }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref      = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll({ target: ref });
   const pathLength = useTransform(scrollYProgress, [0, 0.95], [0, 1]);
 
@@ -337,15 +350,15 @@ export default function ProjectDetail({ project }: { project: Project }) {
               className="container-full flex items-center justify-between"
               style={{ height: "clamp(56px, 7vw, 72px)", borderBottom: "1px solid var(--line)", marginTop: "var(--nav-h)" }}
             >
-              <Link
-                href="/#work"
+              <button
+                onClick={() => navigate("/#work")}
                 className="num-label"
-                style={{ color: "var(--dim)", textDecoration: "none", transition: "color 0.2s" }}
+                style={{ color: "var(--dim)", background: "none", border: "none", cursor: "pointer", transition: "color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--paper)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--dim)")}
               >
                 ← Work
-              </Link>
+              </button>
               <span className="num-label">{project.category}</span>
             </div>
 
@@ -414,9 +427,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   <span className="num-label" style={{ display: "block", marginBottom: 20, color: "var(--accent)" }}>
                     PROJECT NOTE
                   </span>
-                  <h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }}>
-                    {project.story.headline}
-                  </h3>
+                  <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
+                    <div style={{ overflow: "hidden" }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                        {project.story.headline}
+                      </motion.h3>
+                    </div>
+                  </motion.div>
                 </motion.div>
 
                 <motion.div style={{ opacity: story.opacity, y: story.y }}>
@@ -451,9 +468,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   <span className="num-label" style={{ display: "block", marginBottom: 20, color: "var(--accent)" }}>
                     PROJECT RATIONALE
                   </span>
-                  <h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }}>
-                    {project.whyBuilt.headline}
-                  </h3>
+                  <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
+                    <div style={{ overflow: "hidden" }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                        {project.whyBuilt.headline}
+                      </motion.h3>
+                    </div>
+                  </motion.div>
                 </motion.div>
 
                 <motion.div style={{ opacity: why.opacity, y: why.y }}>
@@ -488,9 +509,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   <span className="num-label" style={{ display: "block", marginBottom: 20, color: "var(--accent)" }}>
                     BUILT TOGETHER
                   </span>
-                  <h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }}>
-                    {project.tags.length} tools, one focused system.
-                  </h3>
+                  <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
+                    <div style={{ overflow: "hidden" }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                        {project.tags.length} tools, one focused system.
+                      </motion.h3>
+                    </div>
+                  </motion.div>
                 </motion.div>
 
                 <motion.div style={{ opacity: tools.opacity, y: tools.y, display: "flex", flexDirection: "column", gap: 40 }}>
@@ -536,9 +561,13 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   <span className="num-label" style={{ display: "block", marginBottom: 20, color: "var(--accent)" }}>
                     PROJECT FEEDBACK
                   </span>
-                  <h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }}>
-                    Reviewed this project?
-                  </h3>
+                  <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
+                    <div style={{ overflow: "hidden" }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                        Reviewed this project?
+                      </motion.h3>
+                    </div>
+                  </motion.div>
                 </motion.div>
 
                 <motion.div style={{ opacity: sig.opacity, y: sig.y }}>
@@ -547,20 +576,59 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
             </div>
 
+            {/* ── LIVE PROJECT ─────────────────────────────────── */}
+            {project.live && (
+              <div style={{ borderBottom: "1px solid var(--line)" }}>
+                {/* outer div is visible → whileInView fires; inner div clips the slide */}
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                >
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "block", textDecoration: "none" }}
+                  >
+                    <div className="container-full" style={{ paddingTop: "clamp(40px, 6vw, 80px)", paddingBottom: "clamp(40px, 6vw, 80px)", overflow: "hidden" }}>
+                      <motion.div
+                        variants={{
+                          hidden:  { y: "110%" },
+                          visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+                        }}
+                      >
+                        <TextGlitch
+                          text="VISIT PROJECT ↗"
+                          className="font-display"
+                          style={{
+                            fontSize: "clamp(52px, 10vw, 130px)",
+                            lineHeight: 0.88,
+                            letterSpacing: "-0.02em",
+                            color: "var(--paper)",
+                          }}
+                        />
+                      </motion.div>
+                    </div>
+                  </a>
+                </motion.div>
+              </div>
+            )}
+
             {/* ── Footer ──────────────────────────────────────── */}
             <div
               className="container-full flex items-center justify-between"
               style={{ height: "clamp(56px, 6vw, 72px)" }}
             >
-              <Link
-                href="/#work"
+              <button
+                onClick={() => navigate("/#work")}
                 className="num-label"
-                style={{ color: "var(--dim)", textDecoration: "none", transition: "color 0.2s" }}
+                style={{ color: "var(--dim)", background: "none", border: "none", cursor: "pointer", transition: "color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "var(--paper)")}
                 onMouseLeave={e => (e.currentTarget.style.color = "var(--dim)")}
               >
                 ← All Work
-              </Link>
+              </button>
               <span className="num-label">© {new Date().getFullYear()} ADAM ELMEKADEM</span>
             </div>
 
