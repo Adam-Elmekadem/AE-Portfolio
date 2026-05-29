@@ -9,6 +9,7 @@ import { InfiniteSlider } from "@/components/ui/infinite-slider-horizontal";
 import { type Project } from "@/lib/projects-data";
 import { useNavigate } from "@/components/providers/TransitionProvider";
 import { TextGlitch } from "@/components/ui/text-glitch-effect";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 
 /* ─── Signature pad ──────────────────────────────────────────── */
 function SignaturePad() {
@@ -146,7 +147,7 @@ function Gallery({ images, accent }: { images: string[]; accent: string }) {
     <div>
       <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <DisplayHeading lines={["SELECTED", "FRAMES."]} accentIndex={1} />
+          <SectionTitle lines={["SELECTED", "FRAMES."]} accentIndex={1} />
           <p style={{ ...detailCopyStyle, maxWidth: 560, margin: 0 }}>
             A continuous gallery strip keeps the project readable while giving the screenshots a more editorial, immersive rhythm.
           </p>
@@ -248,53 +249,6 @@ const detailSectionPadStyle = {
   paddingBottom: "clamp(40px, 6vw, 80px)",
 } as const;
 
-const detailHeadingStyle = {
-  fontSize: "clamp(48px, 9vw, 120px)",
-  lineHeight: 0.88,
-  letterSpacing: "-0.02em",
-  color: "var(--paper)",
-  margin: 0,
-} as const;
-
-function DisplayHeading({
-  lines,
-  accentIndex = lines.length - 1,
-  size = detailHeadingStyle.fontSize,
-}: {
-  lines: string[];
-  accentIndex?: number;
-  size?: string;
-}) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-    >
-      {lines.map((line, index) => (
-        <div key={`${line}-${index}`} style={{ overflow: "hidden" }}>
-          <motion.div
-            className="font-display"
-            variants={{
-              hidden: { y: "110%" },
-              visible: {
-                y: 0,
-                transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: index * 0.08 },
-              },
-            }}
-            style={{
-              ...detailHeadingStyle,
-              fontSize: size,
-              color: index === accentIndex ? "var(--accent)" : "var(--paper)",
-            }}
-          >
-            {line}
-          </motion.div>
-        </div>
-      ))}
-    </motion.div>
-  );
-}
 
 /* ─── Full project detail page ───────────────────────────────── */
 export default function ProjectDetail({ project }: { project: Project }) {
@@ -389,7 +343,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div style={{ marginBottom: "clamp(24px, 4vw, 48px)" }}>
-                <DisplayHeading
+                <SectionTitle
                   lines={[project.title, "CASE STUDY."]}
                   accentIndex={1}
                   size="clamp(64px, 12vw, 160px)"
@@ -419,7 +373,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
-                <DisplayHeading lines={["THE", "STORY."]} accentIndex={1} />
+                <SectionTitle lines={["THE", "STORY."]} accentIndex={1} />
               </div>
 
               <div ref={storyRef} className="container-full two-col" style={detailSectionPadStyle}>
@@ -429,7 +383,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   </span>
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
                     <div style={{ overflow: "hidden" }}>
-                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
                         {project.story.headline}
                       </motion.h3>
                     </div>
@@ -460,7 +414,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
-                <DisplayHeading lines={["WHY I", "BUILT IT."]} accentIndex={1} />
+                <SectionTitle lines={["WHY I", "BUILT IT."]} accentIndex={1} />
               </div>
 
               <div ref={whyRef} className="container-full two-col" style={detailSectionPadStyle}>
@@ -470,7 +424,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   </span>
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
                     <div style={{ overflow: "hidden" }}>
-                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
                         {project.whyBuilt.headline}
                       </motion.h3>
                     </div>
@@ -501,7 +455,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
-                <DisplayHeading lines={["STACK &", "PEOPLE."]} accentIndex={1} />
+                <SectionTitle lines={["STACK &", "PEOPLE."]} accentIndex={1} />
               </div>
 
               <div ref={toolsRef} className="container-full two-col" style={detailSectionPadStyle}>
@@ -511,7 +465,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   </span>
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
                     <div style={{ overflow: "hidden" }}>
-                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
                         {project.tags.length} tools, one focused system.
                       </motion.h3>
                     </div>
@@ -553,7 +507,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
               </div>
 
               <div className="container-full" style={{ ...detailSectionPadStyle, borderBottom: "1px solid var(--line)" }}>
-                <DisplayHeading lines={["LEAVE", "YOUR MARK."]} accentIndex={1} />
+                <SectionTitle lines={["LEAVE", "YOUR MARK."]} accentIndex={1} />
               </div>
 
               <div ref={sigRef} className="container-full two-col" style={detailSectionPadStyle}>
@@ -563,7 +517,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                   </span>
                   <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }}>
                     <div style={{ overflow: "hidden" }}>
-                      <motion.h3 className="font-display" style={{ fontSize: "clamp(34px, 4.2vw, 64px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
+                      <motion.h3 className="font-display" style={{ fontSize: "clamp(36px, 5vw, 68px)", lineHeight: 0.92, letterSpacing: "-0.02em", color: "var(--paper)", marginBottom: 0 }} variants={{ hidden: { y: "110%" }, visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}>
                         Reviewed this project?
                       </motion.h3>
                     </div>
