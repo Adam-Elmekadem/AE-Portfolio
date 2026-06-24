@@ -6,7 +6,13 @@
     "category": "Front End / React JS",
     "year": "2024",
     "description": "Front-end e-commerce application designed for clear navigation, clean visuals, and a fast mobile experience.",
-    "tags": ["React", "React Router", "Context API", "Cloudinary", "Netlify"],
+    "tags": [
+      "React",
+      "React Router",
+      "Context API",
+      "Cloudinary",
+      "Netlify"
+    ],
     "color": "#0D1F0D",
     "accentColor": "#C8FF2E",
     "live": "https://akstor-e.netlify.app/",
@@ -42,7 +48,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Lead Developer & Designer" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Lead Developer & Designer"
+      }
     ]
   },
   {
@@ -52,7 +61,12 @@
     "category": "Front End / Back End",
     "year": "2024",
     "description": "Certificate management platform with a simple interface for editing, tracking, and reviewing documents.",
-    "tags": ["Laravel", "HTML", "CSS", "MySQL"],
+    "tags": [
+      "Laravel",
+      "HTML",
+      "CSS",
+      "MySQL"
+    ],
     "color": "#0D0D1F",
     "accentColor": "#8B8BFF",
     "coverImage": "https://picsum.photos/seed/certif-cover/1200/800",
@@ -76,7 +90,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Full Stack Developer" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Full Stack Developer"
+      }
     ]
   },
   {
@@ -86,7 +103,12 @@
     "category": "Design / SEO",
     "year": "2025",
     "description": "Lightweight, structured landing pages to present a service or brand with clear visual hierarchy for a plant brief.",
-    "tags": ["HTML5", "CSS3", "Responsive", "React"],
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "Responsive",
+      "React"
+    ],
     "color": "#1F0D1F",
     "accentColor": "#FF8BE8",
     "coverImage": "https://picsum.photos/seed/egarden-cover/1200/800",
@@ -110,7 +132,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Designer & Developer" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Designer & Developer"
+      }
     ]
   },
   {
@@ -120,7 +145,12 @@
     "category": "UI / Laravel",
     "year": "2026",
     "description": "Internship platform for connecting students with job opportunities.",
-    "tags": ["React", "Laravel", "MySQL", "PL/SQL"],
+    "tags": [
+      "React",
+      "Laravel",
+      "MySQL",
+      "PL/SQL"
+    ],
     "color": "#1F0D0D",
     "accentColor": "#FF8B8B",
     "coverImage": "https://picsum.photos/seed/opport-cover/1200/800",
@@ -144,7 +174,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Lead Developer & UI Designer" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Lead Developer & UI Designer"
+      }
     ]
   },
   {
@@ -154,7 +187,13 @@
     "category": "Design / Motion",
     "year": "2026",
     "description": "Personal website focused on content clarity, readability, and visual identity.",
-    "tags": ["Next.js", "GSAP", "Three.js", "Framer Motion", "TypeScript"],
+    "tags": [
+      "Next.js",
+      "GSAP",
+      "Three.js",
+      "Framer Motion",
+      "TypeScript"
+    ],
     "color": "#0D1F1F",
     "accentColor": "#8BFFF0",
     "coverImage": "https://picsum.photos/seed/port-cover/1200/800",
@@ -178,7 +217,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Designer, Developer & Architect" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Designer, Developer & Architect"
+      }
     ]
   },
   {
@@ -188,7 +230,13 @@
     "category": "E-Commerce / Motion",
     "year": "2025",
     "description": "Futuristic eyeglasses e-commerce shop with a Y2K dark-mode aesthetic, saturated orange accent, GSAP scroll animations, and Motion v12 3D tilt interactions.",
-    "tags": ["Next.js 16", "GSAP", "Motion v12", "Tailwind CSS v4", "TypeScript"],
+    "tags": [
+      "Next.js 16",
+      "GSAP",
+      "Motion v12",
+      "Tailwind CSS v4",
+      "TypeScript"
+    ],
     "color": "#1A0A00",
     "accentColor": "#FF4D00",
     "live": "https://vision-eyewear.netlify.app",
@@ -215,7 +263,10 @@
       ]
     },
     "collaborators": [
-      { "name": "Adam Elmekadem", "role": "Designer & Developer" }
+      {
+        "name": "Adam Elmekadem",
+        "role": "Designer & Developer"
+      }
     ]
   }
 ]
